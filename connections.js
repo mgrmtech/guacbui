@@ -127,6 +127,34 @@ const connectionsObj = {
 // 	}
 // );
 
+/* Permissions
+
+Connection permissions
+0: {op: "add", path: "/connectionPermissions/2", value: "READ"}
+1: {op: "add", path: "/connectionGroupPermissions/1", value: "READ"}
+
+// Change own password
+2: {op: "add", path: "/userPermissions/hell", value: "UPDATE"}
+
+// Administer system
+3: {op: "add", path: "/systemPermissions", value: "ADMINISTER"}
+
+// Create new users
+4: {op: "add", path: "/systemPermissions", value: "CREATE_USER"}
+
+// Create new user ggroups
+5: {op: "add", path: "/systemPermissions", value: "CREATE_USER_GROUP"}
+
+//  Create new connections
+6: {op: "add", path: "/systemPermissions", value: "CREATE_CONNECTION"}
+
+// Create new connection groups
+7: {op: "add", path: "/systemPermissions", value: "CREATE_CONNECTION_GROUP"}
+
+// Create new sharing profiles
+8: {op: "add", path: "/systemPermissions", value: "CREATE_SHARING_PROFILE"}
+*/
+
 const parseConnections = rootConnObj => {
 	const { childConnections, childConnectionGroups } = rootConnObj;
 	const connectionOpPathMap = {};
