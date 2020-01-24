@@ -4,7 +4,7 @@ const { GUAC_BASE_URL } = require('./constants.js');
 const createGroup = async (authToken, group) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups?token=${authToken}`,
 	'POST',
-	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled } }),
+	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled === 'Y' } }),
 );
 
 const readGroup = async (authToken, group) => fetchUtil(
@@ -14,7 +14,7 @@ const readGroup = async (authToken, group) => fetchUtil(
 const updateGroup = async (authToken, group) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
 	'PUT',
-	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled } }),
+	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled === 'Y' } }),
 );
 
 const deleteGroup = async (authToken, group) => fetchUtil(
@@ -29,8 +29,8 @@ const createUser = async (authToken, user) => fetchUtil(
 		username: user.username,
 		password: user.password,
 		attributes: {
-			disabled: user.loginDisabled,
-			expired: user.passwordExpired,
+			disabled: user.loginDisabled === 'Y',
+			expired: user.passwordExpired === 'Y',
 			timezone: user.timezone, // 'Asia/Kolkata'
 			'access-window-start': user.accessWindowStart, // HH:MM:SS
 			'access-window-end': user.accessWindowEnd, // HH:MM:SS
@@ -44,7 +44,7 @@ const createUser = async (authToken, user) => fetchUtil(
 	}),
 );
 
-const readUser = async (authToken, username) => fetchUtil(
+const readUser = async (authToken, user) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/users/${user.username}?token=${authToken}`,
 );
 
@@ -55,8 +55,8 @@ const updateUser = async (authToken, user) => fetchUtil(
 		username: user.username,
 		password: user.password,
 		attributes: {
-			disabled: user.loginDisabled,
-			expired: user.passwordExpired,
+			disabled: user.loginDisabled === 'Y',
+			expired: user.passwordExpired === 'Y',
 			timezone: user.timezone, // 'Asia/Kolkata'
 			'access-window-start': user.accessWindowStart, // HH:MM:SS
 			'access-window-end': user.accessWindowEnd, // HH:MM:SS
@@ -70,7 +70,7 @@ const updateUser = async (authToken, user) => fetchUtil(
 	}),
 );
 
-const deleteUser = async (authToken, username) => fetchUtil(
+const deleteUser = async (authToken, user) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/users/${user.username}?token=${authToken}`,
 	'DELETE',
 );
