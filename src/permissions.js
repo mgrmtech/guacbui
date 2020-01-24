@@ -1,3 +1,6 @@
+const { GUAC_BASE_URL, POSSIBLE_SYSTEM_PERMISSIONS } = require('./constants.js');
+const { fetchUtil } = require('./utils.js');
+
 /* Example permission patches
 
 Connection permissions
@@ -25,8 +28,8 @@ Create new connection groups
 Create new sharing profiles
 8: {op: "add", path: "/systemPermissions", value: "CREATE_SHARING_PROFILE"}
 */
-const createPermAssigner = (options = { isGroup: false }) => async (authToken, username, permissions) => fetchUtil(
-	`${GUAC_BASE_URL}/api/session/data/mysql/user`${options.isGroup ? 'Group' : ''}`s/${username}/permissions?token=${authToken}`,
+const createPermAssigner = (options = { isGroup: false }) => async (authToken, name, permissions) => fetchUtil(
+	`${GUAC_BASE_URL}/api/session/data/mysql/user${options.isGroup ? 'Group' : ''}s/${name}/permissions?token=${authToken}`,
 	'PATCH',
 	JSON.stringify(
 		permissions.map(perm => ({ op: 'add', path: perm.path, value: perm.value }))
@@ -60,7 +63,7 @@ const getPathValArrFromPermObj = (permissions, connPathMap, username = null) => 
 		});
 	}
 	if (permissions.connections) {
-		permission.connections.forEach(conn => {
+		permissions.connections.forEach(conn => {
 			const connPath = connPathMap[conn];
 			if (connPath) {
 				pathValArr.push({ path: connPath, value: 'READ' });
@@ -70,6 +73,7 @@ const getPathValArrFromPermObj = (permissions, connPathMap, username = null) => 
 	if (permissions.userUpdate) {
 		pathValArr.push({ path: `/userPermissions/${username}`, value: 'UPDATE' });
 	}
+	return pathValArr;
 };
 
 module.exports = { assignPermissionsToUser, assignPermissionsToGroup, getPathValArrFromPermObj };

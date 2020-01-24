@@ -7,10 +7,19 @@ const createGroup = async (authToken, group) => fetchUtil(
 	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled } }),
 );
 
-const patchGroup = async (authToken, group) => fetchUtil(
+const readGroup = async (authToken, group) => fetchUtil(
+	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
+);
+
+const updateGroup = async (authToken, group) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
 	'PUT',
 	JSON.stringify({ identifier: group.identifier, attributes: { disabled: group.disabled } }),
+);
+
+const deleteGroup = async (authToken, group) => fetchUtil(
+	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
+	'DELETE',
 );
 
 const createUser = async (authToken, user) => fetchUtil(
@@ -35,9 +44,13 @@ const createUser = async (authToken, user) => fetchUtil(
 	}),
 );
 
-const patchUser = async (authToken, user) => fetchUtil(
+const readUser = async (authToken, username) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/users/${user.username}?token=${authToken}`,
-	'POST',
+);
+
+const updateUser = async (authToken, user) => fetchUtil(
+	`${GUAC_BASE_URL}/api/session/data/mysql/users/${user.username}?token=${authToken}`,
+	'PUT',
 	JSON.stringify({
 		username: user.username,
 		password: user.password,
@@ -57,18 +70,27 @@ const patchUser = async (authToken, user) => fetchUtil(
 	}),
 );
 
-const addUsersToGroup = async (authToken, groupName, users) => fetchUtil(
+const deleteUser = async (authToken, username) => fetchUtil(
+	`${GUAC_BASE_URL}/api/session/data/mysql/users/${user.username}?token=${authToken}`,
+	'DELETE',
+);
+
+const addUsersToGroup = async (authToken, groupName, usernames) => fetchUtil(
 	`${GUAC_BASE_URL}/api/session/data/mysql/userGroups/${groupName}/memberUsers?token=${authToken}`,
 	'PATCH',
 	JSON.stringify(
-		users.map(user => ({ op: 'add', path: '/', value: user }))
+		usernames.map(username => ({ op: 'add', path: '/', value: username }))
 	),
 );
 
 module.exports = {
 	createGroup,
-	patchGroup,
+	readGroup,
+	updateGroup,
+	deleteGroup,
 	createUser,
-	patchUser,
+	readUser,
+	updateUser,
+	deleteUser,
 	addUsersToGroup,
 };

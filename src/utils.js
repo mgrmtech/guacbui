@@ -1,4 +1,5 @@
 const path = require('path');
+const fetch = require('node-fetch');
 const { SCREENSHOTS_PATH, GUAC_BASE_URL } = require('./constants.js');
 
 const screenshot = async (page, filename) => page.screenshot({
@@ -6,11 +7,11 @@ const screenshot = async (page, filename) => page.screenshot({
 	fullPage: true,	
 });
 
-const fetchUtil = async (url, method = 'GET', body, baseURL = GUAC_BASE_URL) => fetch(
+const fetchUtil = async (url, method = 'GET', body = null, baseURL = GUAC_BASE_URL) => fetch(
 	url,
 	{
-		credentials: omit,
-		headers :{
+		credentials: 'omit',
+		headers: {
 			accept: 'application/json, text/plain, */*',
 			'accept-language': 'en-US,en;q=0.9',
 			'content-type': 'application/json',
@@ -23,4 +24,6 @@ const fetchUtil = async (url, method = 'GET', body, baseURL = GUAC_BASE_URL) => 
 	}
 );
 
-module.exports = { screenshot, fetchUtil };
+const transformCsvStrToArr = str => str ? str.split(', ').map(e => e.trim()) : [];
+
+module.exports = { screenshot, fetchUtil, transformCsvStrToArr };
