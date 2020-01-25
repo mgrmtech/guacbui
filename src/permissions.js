@@ -58,7 +58,11 @@ const getPathValArrFromPermObj = (permissions, connPathMap, username = null) => 
 	if (permissions.system) {
 		permissions.system.forEach(val => {
 			if (POSSIBLE_SYSTEM_PERMISSIONS.includes(val)) {
-				pathValArr.push({ path: '/systemPermissions', value: val });
+				if (val === 'UPDATE') {
+					pathValArr.push({ path: `/userPermissions/${username}`, value: 'UPDATE' });
+				} else {
+					pathValArr.push({ path: '/systemPermissions', value: val });
+				}
 			}
 		});
 	}
@@ -70,9 +74,9 @@ const getPathValArrFromPermObj = (permissions, connPathMap, username = null) => 
 			}
 		})
 	}
-	if (permissions.userUpdate) {
-		pathValArr.push({ path: `/userPermissions/${username}`, value: 'UPDATE' });
-	}
+	// if (permissions.userUpdate) {
+	// 	pathValArr.push({ path: `/userPermissions/${username}`, value: 'UPDATE' });
+	// }
 	return pathValArr;
 };
 

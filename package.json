@@ -1,12 +1,12 @@
 {
 	"name": "guacbui",
 	"version": "1.0.0",
-	"description": "A bulk user/group importer for Guacamole instances",
+	"description": "A bulk user/group importer for Apache Guacamole instances",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"parse": "node ./src/parser.js",
-		"start": "npm run parse"
+		"start": "npm run parse && node index.js"
 	},
 	"author": "",
 	"license": "ISC",

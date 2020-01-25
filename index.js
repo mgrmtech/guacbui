@@ -123,7 +123,7 @@ const run = async () => {
 			}
 
 			// Assign permissions to user
-			const pathValArrForUserPerms = getPathValArrFromPermObj(user.permissions, connectionPathMap);
+			const pathValArrForUserPerms = getPathValArrFromPermObj(user.permissions, connectionPathMap, user.username);
 			console.log(`Assigning permissions to the user "${user.username}"...`);
 			await assignPermissionsToUser(authToken, user.username, pathValArrForUserPerms);
 			console.log(`Assigned permissions to the user "${user.username}".\n`);

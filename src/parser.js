@@ -24,8 +24,10 @@ parser.setTranseform([ groupTransform, userTransform ])
 
 let dataFileReadError = null;
 try {
-	const [groups, users] = parser.parseXls2Json(DATA_FILE, { isNested: true });
-	groupUsers = users.reduce(
+	let [groups, users] = parser.parseXls2Json(DATA_FILE, { isNested: true });
+	groups = groups.filter(group => !!group.identifier);
+	users = users.filter(user => !!user.username);
+	const groupUsers = users.reduce(
 		(acc, user) => {
 			user.userGroups.forEach(group => {
 				if (!acc[group]) {
