@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
-const {guacBaseURL} = require('../config.js');
 
-const fetchUtil = async (endpoint, method = 'GET', body = null, baseURL = guacBaseURL) => fetch(
+const fetchUtil = async (baseURL, endpoint, method = 'GET', body = null) => fetch(
 	`${baseURL}${endpoint}`,
 	{
 		credentials: 'omit',

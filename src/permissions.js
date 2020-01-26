@@ -29,7 +29,8 @@ const getPathValArr = (permissions, connPathMap, username = null) => {
 const createPermAssigner = (options = {isGroup: false}) => async (
 	authToken,
 	entity,
-	connectionPathMap
+	connectionPathMap,
+	baseURL,
 ) => {
 	const pathValArr = getPathValArr(
 		entity.permissions,
@@ -37,6 +38,7 @@ const createPermAssigner = (options = {isGroup: false}) => async (
 		options.isGroup ? null : entity.username
 	);
 	return fetchUtil(
+		baseURL,
 		`/api/session/data/mysql/user${
 			options.isGroup ? 'Group' : ''
 		}s/${entity.username}/permissions?token=${authToken}`,

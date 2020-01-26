@@ -1,6 +1,7 @@
 const {fetchUtil} = require('./utils.js');
 
-const fetchConnectionTree = async authToken => fetchUtil(
+const fetchConnectionTree = async (authToken, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/connectionGroups/ROOT/tree?token=${authToken}`
 );
 
@@ -33,8 +34,8 @@ const makeConnectionPathMap = rootConnObj => {
 	return connectionPathMap;
 };
 
-const getConnectionPathMap = async authToken => {
-	const connectionTree = await (await fetchConnectionTree(authToken)).json();
+const getConnectionPathMap = async (authToken, baseURL) => {
+	const connectionTree = await (await fetchConnectionTree(authToken, baseURL)).json();
 	return makeConnectionPathMap(connectionTree);
 };
 

@@ -23,49 +23,58 @@ const makeUserBody = user => JSON.stringify({
 	}
 });
 
-const createGroup = async (authToken, group) => fetchUtil(
+const createGroup = async (authToken, group, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/userGroups?token=${authToken}`,
 	'POST',
 	makeGroupBody(group)
 );
 
-const readGroup = async (authToken, group) => fetchUtil(
+const readGroup = async (authToken, group, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`
 );
 
-const updateGroup = async (authToken, group) => fetchUtil(
+const updateGroup = async (authToken, group, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
 	'PUT',
 	makeGroupBody(group)
 );
 
-const deleteGroup = async (authToken, group) => fetchUtil(
+const deleteGroup = async (authToken, group, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/userGroups/${group.identifier}?token=${authToken}`,
 	'DELETE'
 );
 
-const createUser = async (authToken, user) => fetchUtil(
+const createUser = async (authToken, user, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/users?token=${authToken}`,
 	'POST',
 	makeUserBody(user)
 );
 
-const readUser = async (authToken, user) => fetchUtil(
+const readUser = async (authToken, user, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/users/${user.username}?token=${authToken}`
 );
 
-const updateUser = async (authToken, user) => fetchUtil(
+const updateUser = async (authToken, user, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/users/${user.username}?token=${authToken}`,
 	'PUT',
 	makeUserBody(user)
 );
 
-const deleteUser = async (authToken, user) => fetchUtil(
+const deleteUser = async (authToken, user, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/users/${user.username}?token=${authToken}`,
 	'DELETE'
 );
 
-const addUsersToGroup = async (authToken, groupIdentifier, usernames) => fetchUtil(
+const addUsersToGroup = async (authToken, groupIdentifier, usernames, baseURL) => fetchUtil(
+	baseURL,
 	`/api/session/data/mysql/userGroups/${groupIdentifier}/memberUsers?token=${authToken}`,
 	'PATCH',
 	JSON.stringify(
