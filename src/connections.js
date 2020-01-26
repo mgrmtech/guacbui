@@ -1,19 +1,23 @@
-const { fetchUtil } = require('./utils.js');
-const { GUAC_BASE_URL, POSSIBLE_SYSTEM_PERMISSIONS } = require('./constants.js');
+const {fetchUtil} = require('./utils.js');
 
-const fetchConnectionTree = async (authToken) => fetchUtil(
-	`${GUAC_BASE_URL}/api/session/data/mysql/connectionGroups/ROOT/tree?token=${authToken}`,
+const fetchConnectionTree = async authToken => fetchUtil(
+	`/api/session/data/mysql/connectionGroups/ROOT/tree?token=${authToken}`
 );
 
-const getConnectionPathMap = rootConnObj => {
-	const { childConnections, childConnectionGroups } = rootConnObj;
+const makeConnectionPathMap = rootConnObj => {
+	const {childConnections, childConnectionGroups} = rootConnObj;
 	const connectionPathMap = {};
 
 	const parseChildConnectionGroups = groups => {
 		groups.forEach(group => {
 			connectionPathMap[group.name] = `/connectionGroupPermissions/${group.identifier}`;
-			if (group.childConnectionGroups) parseChildConnectionGroups(group.childConnectionGroups);
-			if (group.childConnections) parseChildConnections(group.childConnections);
+			if (group.childConnectionGroups) {
+				parseChildConnectionGroups(group.childConnectionGroups);
+			}
+
+			if (group.childConnections) {
+				parseChildConnections(group.childConnections);
+			}
 		});
 	};
 
@@ -29,4 +33,9 @@ const getConnectionPathMap = rootConnObj => {
 	return connectionPathMap;
 };
 
-module.exports = { fetchConnectionTree, getConnectionPathMap };
+const getConnectionPathMap = async authToken => {
+	const connectionTree = await (await fetchConnectionTree(authToken)).json();
+	return makeConnectionPathMap(connectionTree);
+};
+
+module.exports = {getConnectionPathMap};

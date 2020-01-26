@@ -4,9 +4,8 @@
 	"description": "A bulk user/group importer for Apache Guacamole instances",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"parse": "node ./src/parser.js",
-		"start": "npm run parse && node index.js"
+		"test": "xo",
+		"start": "node index.js"
 	},
 	"author": "",
 	"license": "ISC",
@@ -14,5 +13,8 @@
 		"node-fetch": "^2.6.0",
 		"puppeteer": "^2.0.0",
 		"simple-excel-to-json": "^2.2.1"
+	},
+	"devDependencies": {
+		"xo": "^0.25.3"
 	}
 }
