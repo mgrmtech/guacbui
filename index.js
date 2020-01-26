@@ -1,9 +1,6 @@
-const {importer} = require('./src/importer.js');
-const config = require('./config.js');
+const {importer, rollback} = require('./src/importer.js');
+const {convertXlsxToObj} = require('./src/parser.js');
 
-importer(
-	config.guacBaseURL,
-	config.guacUsername,
-	config.guacPassword,
-	config.xlsxDataPath
-);
+const {runCli} = require('./cli');
+
+runCli(importer, rollback, convertXlsxToObj);

@@ -1,15 +1,15 @@
 {
 	"name": "guacbui",
 	"version": "1.0.0",
-	"description": "A bulk user/group importer for Apache Guacamole instances",
+	"description": "A bulk user/group importer/rollback utility library for Apache Guacamole instances",
 	"main": "index.js",
 	"scripts": {
-		"test": "xo",
-		"start": "node index.js"
+		"test": "xo"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"meow": "^6.0.0",
 		"node-fetch": "^2.6.0",
 		"puppeteer": "^2.0.0",
 		"simple-excel-to-json": "^2.2.1"
