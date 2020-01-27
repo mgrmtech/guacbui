@@ -7,13 +7,16 @@
 		"test": "xo"
 	},
 	"author": "Sai Kishore K <sai@mgrm.tech>",
+	"repository": {
+		"type" : "git",
+		"url" : "https://github.com/mgrmtech/guacbui.git"
+	},
 	"license": "ISC",
 	"dependencies": {
 		"node-fetch": "^2.6.0",
 		"simple-excel-to-json": "^2.2.1"
 	},
 	"devDependencies": {
-		"meow": "^6.0.0",
 		"puppeteer": "^2.0.0",
 		"xo": "^0.25.3"
 	}
