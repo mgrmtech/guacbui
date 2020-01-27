@@ -33,9 +33,10 @@ const data = convertXlsxToObj(excelFilePathWithImportData);
 ### rollback: (baseURL, authToken, data) => void
 - This function only differs from `importer` in the aspect that it completely rolls back any entity, association as specified in the `data` object
 
-### Running the example
+## Example
+- You can peruse the code inside `example` folder to gain a better understanding of the behind-the-scenes of guacbui.
+- Ensure appropriate values are populated inside `example/config.js`, before running the following:
 ```
 $ cd example
 $ node index.js
 ```
-You can peruse the code inside `example` folder to gain a better understanding of the behind-the-scenes of guacbui.
