@@ -30,7 +30,7 @@ const createPermAssigner = (options = {isGroup: false}) => async (
 	authToken,
 	entity,
 	connectionPathMap,
-	baseURL,
+	baseURL
 ) => {
 	const pathValArr = getPathValArr(
 		entity.permissions,
