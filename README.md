@@ -1,6 +1,6 @@
 ## GUACBUI?
 
-guacbui aids you with importing users, and groups (and their associations) at bulk, on your guacamole instances. It also assigns permissions as specified, to users, and groups.
+guacbui aids in importing users, and groups (and their associations) at bulk, on guacamole instances. It also assigns permissions as specified, to users, and groups.
 
 ## Usage
 
@@ -18,23 +18,22 @@ const {
 ```
 
 ### convertXlsxToObj: (excelFilePathWithImportData) => importData
-- Please look at the `template.xlsx` file inside the `example` folder in this repo, to get an idea on how we should structure the data in the excel file — `excelFilePathWithImportData`.
+- Please look at the `template.xlsx` file inside the `example` folder in this repo, to get an idea on how the data in the excel file — `excelFilePathWithImportData` — should be structured.
 
 ### importer: (baseURL, authToken, data) => void
-- This function imports all users, groups, userGroupAssociations; and approriately assign perms as specified in the `data` object:
+- This function imports all entities (users, groups), associations (users of a group); and approriately assign perms as specified in the `data` object, which can be computed using a corresponding excel file, as follows:
 ```js
 const data = convertXlsxToObj(excelFilePathWithImportData);
 ```
 - `baseURL` is the base URL of the Guacamole instance
 - `authToken` is the JSON token of a logged in user with enough administrator privileges to enable guacbui in doing what it does
-- We can safely run `importer` even if some of the entities, associations from `data` have already been imported; `importer` will just update these
-
+- `importer` can be safely run even if some of the entities, and associations from `data` have already been imported; `importer` will just update these
 
 ### rollback: (baseURL, authToken, data) => void
-- This function only differs from `importer` in the aspect that it completely rolls back any entity, association as specified in the `data` object
+- This function does the opposite of what `importer` does — it deletes all entities (users, groups), and associations as specified in the `data` object
 
 ## Example
-- You can peruse the code inside `example` folder to gain a better understanding of the behind-the-scenes of guacbui.
+- The code inside `example` folder can be perused, to gain a better understanding on consuming guacbui's api.
 - Ensure appropriate values are populated inside `example/config.js`, before running the following:
 ```
 $ cd example
