@@ -8,7 +8,7 @@ const getPathValArr = (permissions, connPathMap, username = null) => {
 			if (POSSIBLE_SYSTEM_PERMISSIONS.includes(val)) {
 				pathValArr.push({
 					path: val === 'UPDATE' ? `/userPermissions/${username}` : '/systemPermissions',
-					val
+					value: val
 				});
 			}
 		});
@@ -37,11 +37,12 @@ const createPermAssigner = (options = {isGroup: false}) => async (
 		connectionPathMap,
 		options.isGroup ? null : entity.username
 	);
+	console.log({ entity, pathValArr })
 	return fetchUtil(
 		baseURL,
 		`/api/session/data/mysql/user${
 			options.isGroup ? 'Group' : ''
-		}s/${entity.username}/permissions?token=${authToken}`,
+		}s/${options.isGroup ? entity.identifier : entity.username}/permissions?token=${authToken}`,
 		'PATCH',
 		JSON.stringify(
 			pathValArr.map(e => ({op: 'add', path: e.path, value: e.value}))
