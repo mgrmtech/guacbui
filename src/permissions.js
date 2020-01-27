@@ -37,7 +37,6 @@ const createPermAssigner = (options = {isGroup: false}) => async (
 		connectionPathMap,
 		options.isGroup ? null : entity.username
 	);
-	console.log({ entity, pathValArr })
 	return fetchUtil(
 		baseURL,
 		`/api/session/data/mysql/user${
