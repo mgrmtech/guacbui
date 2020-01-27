@@ -13,6 +13,8 @@
 		"simple-excel-to-json": "^2.2.1"
 	},
 	"devDependencies": {
+		"meow": "^6.0.0",
+		"puppeteer": "^2.0.0",
 		"xo": "^0.25.3"
 	}
 }
