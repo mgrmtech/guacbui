@@ -18,7 +18,7 @@ const {
 ```
 
 ### convertXlsxToObj: (excelFilePathWithImportData) => importData
-- Please look at the `template.xlsx` file inside the `example` folder in this repo, to get an idea on how the data in the excel file — `excelFilePathWithImportData` — should be structured.
+- Please look at the `template.xlsx` file inside the `example` folder in this repo, to know how the data in the excel file should be structured.
 
 ### importer: (baseURL, authToken, data) => void
 - This function imports all entities (users, groups), associations (users of a group); and approriately assign perms as specified in the `data` object, which can be computed using a corresponding excel file, as follows:
