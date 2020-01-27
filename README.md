@@ -2,7 +2,7 @@
 
 guacbui aids you with importing users, and groups (and their associations) at bulk, on your guacamole instances. With it we can also assign permissions as desired to users, and groups.
 
-## Instruction
+## Instructions
 
 ```bash
 $ npm install guacbui
@@ -16,7 +16,6 @@ const {
 	rollback
 } = require('guacbui');
 ```
-
 
 ### convertXlsxToObj: (excelFilePathWithImportData) => importData
 - Please look at the `template.xlsx` file inside the `data` folder in this repo, to  get an idea on how we should structure the data in the excel file — `excelFilePathWithImportData`.
