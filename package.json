@@ -8,8 +8,8 @@
 	},
 	"author": "Sai Kishore K <sai@mgrm.tech>",
 	"repository": {
-		"type" : "git",
-		"url" : "https://github.com/mgrmtech/guacbui.git"
+		"type": "git",
+		"url": "https://github.com/mgrmtech/guacbui.git"
 	},
 	"license": "ISC",
 	"dependencies": {

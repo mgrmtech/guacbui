@@ -1,6 +1,6 @@
-const {importer, rollback, convertXlsxToObj} = require('..');
 const {getAuthToken} = require('./login.js');
-const {baseURL, username, password, authToken, xlsxPath} = require('./config.js')
+const {baseURL, username, password, authToken, xlsxPath} = require('./config.js');
+const {importer, rollback, convertXlsxToObj} = require('..');
 
 const run = async (options = {rollback: false}) => {
 	let authTokenForThisRun = authToken;
