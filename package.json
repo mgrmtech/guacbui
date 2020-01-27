@@ -1,6 +1,6 @@
 {
 	"name": "guacbui",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A bulk user/group importer/rollback utility library for Apache Guacamole instances",
 	"main": "index.js",
 	"scripts": {
