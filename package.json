@@ -6,12 +6,10 @@
 	"scripts": {
 		"test": "xo"
 	},
-	"author": "",
+	"author": "Sai Kishore K <sai@mgrm.tech>",
 	"license": "ISC",
 	"dependencies": {
-		"meow": "^6.0.0",
 		"node-fetch": "^2.6.0",
-		"puppeteer": "^2.0.0",
 		"simple-excel-to-json": "^2.2.1"
 	},
 	"devDependencies": {
