@@ -42,5 +42,5 @@ $ node index.js
 
 ## TODO
 
-- [ ] Fix the race condition step in login.js to account for incorrect username/password
-- [ ] Fix DATA CONCERSION ERROR bug due to wrong (incorrect template) excel file imports
+- [ ] Fix the bug at race condition step in login.js due to incorrect username/password
+- [ ] Fix DATA CONVERSION ERROR bug due to wrong (incorrect template) excel file imports
