@@ -39,3 +39,8 @@ const data = convertXlsxToObj(excelFilePathWithImportData);
 $ cd example
 $ node index.js
 ```
+
+## TODO
+
+- [ ] Fix the race condition step in login.js to account for incorrect username/password
+- [ ] Fix DATA CONCERSION ERROR bug due to wrong (incorrect template) excel file imports
