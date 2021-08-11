@@ -12,7 +12,7 @@ guacbui exposes three functions:
 ```js
 const {
 	convertXlsxToObj,
-	imporer,
+	importer,
 	rollback
 } = require('guacbui');
 ```
