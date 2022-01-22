@@ -13,7 +13,7 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"node-fetch": "^2.6.0",
+		"node-fetch": "^3.1.1",
 		"simple-excel-to-json": "^2.2.1"
 	},
 	"devDependencies": {
