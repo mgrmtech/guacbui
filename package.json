@@ -18,6 +18,6 @@
 	},
 	"devDependencies": {
 		"puppeteer": "^2.0.0",
-		"xo": "^0.25.3"
+		"xo": "^0.53.1"
 	}
 }
