@@ -4,7 +4,8 @@
 	"description": "A bulk user/group importer/rollback utility library for Apache Guacamole instances",
 	"main": "index.js",
 	"scripts": {
-		"test": "xo"
+		"lint:test": "xo",
+		"lint:fix": "xo --fix"
 	},
 	"author": "Sai Kishore K <sai@mgrm.tech>",
 	"repository": {
