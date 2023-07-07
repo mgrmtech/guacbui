@@ -9,7 +9,7 @@ const makeConnectionPathMap = rootConnObj => {
 	const {childConnections, childConnectionGroups} = rootConnObj;
 	const connectionPathMap = {};
 
-	const parseChildConnectionGroups = groups => {
+	const parseChildConnectionGroups = (groups = []) => {
 		groups.forEach(group => {
 			connectionPathMap[group.name] = `/connectionGroupPermissions/${group.identifier}`;
 			if (group.childConnectionGroups) {
@@ -22,7 +22,7 @@ const makeConnectionPathMap = rootConnObj => {
 		});
 	};
 
-	const parseChildConnections = connections => {
+	const parseChildConnections = (connections = []) => {
 		connections.forEach(connection => {
 			connectionPathMap[connection.name] = `/connectionPermissions/${connection.identifier}`;
 		});
